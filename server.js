@@ -104,7 +104,7 @@ io.on('connection',function(socket){
     });
     socket.on('newPlayer',function(config){
         data=config;
-        console.log("NEW PLAYER OUTSIDE");
+
         if(data!=null){
             console.log("newPlayer");
 
@@ -156,10 +156,9 @@ io.on('connection',function(socket){
 
         else if (io.sockets.sockets.length < 1) {
             gameState = 0;
-            
         }
-        console.log(io.sockets.sockets.length);
-        console.log(playersOn);
+
+
         io.emit('updateGame', {
             playersOn: playerList,
             gameState: gameState,
