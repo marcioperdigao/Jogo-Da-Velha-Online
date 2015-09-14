@@ -1,0 +1,41 @@
+doctype html
+html
+   head
+      title Site com Bootstrap
+      meta(name='viewport', content='width=device-width, initial-scale=1.0')
+      // Bootstrap
+      link(href='public/stylesheets/bootstrap.min.css', rel='stylesheet')
+      link(href='./public/stylesheets/style.css', rel='stylesheet')
+      script(src='public/javascript/game.js')
+   body
+      .container-fluid
+
+         header.row
+            .row
+               h1.col-md-12 Jogo da Forca
+            | &#x9;&#x9;
+            .row
+               ul.col-md-12
+                  button#connect.col-md-3(type='button') Connect to the game
+                  | &#x9;&#x9;&#x9;
+                  button#play.col-md-2(type='button') Play
+                  | &#x9;&#x9;&#x9;
+                  button#disconnect.col-md-3(type='button') Disconnect
+                  | &#x9;&#x9;&#x9;
+                  button#about.col-md-2(type='button') About
+                  | &#x9;&#x9;&#x9;
+                  button#howTo.col-md-2(type='button') How To
+            // need to me nav later
+         | &#x9;
+         main.row
+            header.row
+               h3.col-md-12 Guess the word
+            | &#x9;&#x9;
+            .row
+               canvas#canvas-game.col-md-12(height='400', width='600')
+         | &#x9;
+         | &#x9;
+         footer.row
+      // jQuery (necessario para os plugins Javascript Bootstrap)
+      script(src='public/javascript/jquery.js')
+      script(src='public/javascript/bootstrap.min.js')

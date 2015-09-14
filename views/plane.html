@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Site com Bootstrap</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- Bootstrap -->
+	<link href="/public/stylesheets/bootstrap.min.css" rel="stylesheet">
+	<link href="/public/stylesheets/style.css" rel="stylesheet">
+	<script src="http://localhost:8080/socket.io/socket.io.js" type="text/javascript"></script>
+	<script src="/public/javascripts/player.js" type="text/javascript"></script>
+	<script src="/public/javascripts/game.js" type="text/javascript"></script>
+</head>
+<body>
+<div class="container-fluid">
+
+	<header class="row">
+		<div class="row">
+			<h1 class="col-md-12">Jogo da Forca</h1>
+		</div>
+		<div class="row"><ul class="col-md-12">
+			<button id="connect" type="button" class="col-md-3">Connect to the game</button>
+			<button id="play" type="button" class="col-md-2">Play</button>
+			<button id="disconnect" type="button" class="col-md-3">Disconnect</button>
+			<button id="about" type="button" class="col-md-2">About</button>
+			<button id="howTo" type="button" class="col-md-2">How To</button>
+
+		</ul></div><!--need to me nav later-->
+	</header>
+	<main class="row">
+		<header class="row">
+			<h3 class="col-md-12">Guess the word</h3>
+		</header>
+		<div class="row">
+
+			<canvas id="canvas-game" class="col-md-7" height="400" width="600"></canvas>
+		</div>
+	</main>
+
+	<footer class="row">
+
+	</footer>
+
+</div>
+
+
+<!-- jQuery (necessario para os plugins Javascript Bootstrap) -->
+<script src="public/javascripts/jquery-1.11.3.min.js"></script>
+<script src="public/javascripts/bootstrap.min.js"></script>
+</body>
+</html>
