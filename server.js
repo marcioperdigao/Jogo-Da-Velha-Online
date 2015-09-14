@@ -156,10 +156,7 @@ io.on('connection',function(socket){
 
         else if (io.sockets.sockets.length < 1) {
             gameState = 0;
-            firstToPlay=0;
-            playersOn=null;
-            okChange=0;
-            tokenId=0;
+            
         }
         console.log(io.sockets.sockets.length);
         console.log(playersOn);
