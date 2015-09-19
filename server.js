@@ -154,7 +154,7 @@ io.on('connection',function(socket){
             }
         }
 
-        else if (io.sockets.sockets.length < 1) {
+        else if (io.sockets.sockets.length < 2) {
             gameState = 0;
         }
 
