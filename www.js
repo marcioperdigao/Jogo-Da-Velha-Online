@@ -169,57 +169,57 @@ io.on('connection',function(socket){
             numberOfLetters: forcaWord.numbersOfLetters
         });
     }
-    //util functions
+        //util functions
 
-    /*Renova a sessão do game
-     * não sei se pode da conflito com os eventos, causando um grande desastre no game*/
-    function renewTheGame(){
-        console.log("FUNCIONA");
-        firstToPlay = Math.floor(Math.random() * 2);
-        playersOn[firstToPlay].player.turn=1;
+        /*Renova a sessão do game
+        * não sei se pode da conflito com os eventos, causando um grande desastre no game*/
+        function renewTheGame(){
+            console.log("FUNCIONA");
+            firstToPlay = Math.floor(Math.random() * 2);
+            playersOn[firstToPlay].player.turn=1;
 
-        tokenId=playersOn[firstToPlay].player.id;
+            tokenId=playersOn[firstToPlay].player.id;
 
-        //The word
-        indexOfTheWord=Math.floor(Math.random()*12);
-        forca.palavras.sort();
-        forcaWord.theWord = forca.palavras[indexOfTheWord];
-        forcaWord.numbersOfLetters = forca.palavras[indexOfTheWord].length;
-        numberOfLetters=forca.palavras[indexOfTheWord].length;
+            //The word
+            indexOfTheWord=Math.floor(Math.random()*12);
+            forca.palavras.sort();
+            forcaWord.theWord = forca.palavras[indexOfTheWord];
+            forcaWord.numbersOfLetters = forca.palavras[indexOfTheWord].length;
+            numberOfLetters=forca.palavras[indexOfTheWord].length;
 
-        //Cria uma variavel com o tamanho certo mas so underline
-        for(var indefOfPlayer=0;indefOfPlayer<usersOnline;indefOfPlayer++) {
-            //Apaga as letras erradas ou pelo menos tenta, não sei
-            playersOn[indefOfPlayer].player.lettersWrongs="";
-            //Copia a palavra para a instância de usuario
-            playersOn[indefOfPlayer].player.letters=forca.palavras[indexOfTheWord];
-            for (var indexOfLettr = 0; indexOfLettr <  playersOn[indefOfPlayer].player.letters.length; indexOfLettr++) {
-                playersOn[indefOfPlayer].player.letters = setCharAt(playersOn[indefOfPlayer].player.letters,
-                    indexOfLettr, "_");
+            //Cria uma variavel com o tamanho certo mas so underline
+            for(var indefOfPlayer=0;indefOfPlayer<usersOnline;indefOfPlayer++) {
+                //Apaga as letras erradas ou pelo menos tenta, não sei
+                playersOn[indefOfPlayer].player.lettersWrongs="";
+                //Copia a palavra para a instância de usuario
+                playersOn[indefOfPlayer].player.letters=forca.palavras[indexOfTheWord];
+                for (var indexOfLettr = 0; indexOfLettr <  playersOn[indefOfPlayer].player.letters.length; indexOfLettr++) {
+                    playersOn[indefOfPlayer].player.letters = setCharAt(playersOn[indefOfPlayer].player.letters,
+                        indexOfLettr, "_");
+                }
+
+                function setCharAt(str, index, chr) {
+                    if (index > str.length - 1) return str;
+                    return str.substr(0, index) + chr + str.substr(index + 1);
+                }
+
             }
+            console.log(playersOn[0].player.letters.toUpperCase());
 
-            function setCharAt(str, index, chr) {
-                if (index > str.length - 1) return str;
-                return str.substr(0, index) + chr + str.substr(index + 1);
-            }
+            firstToPlay=1; //certeza de que first ToPlay não é zero
 
         }
-        console.log(playersOn[0].player.letters.toUpperCase());
 
-        firstToPlay=1; //certeza de que first ToPlay não é zero
+        /*Verifica se os players estão prontos
+        * Basicamente verifica se já colocaram seus nomes e se são 2*/
+        function verificarPlayersDone() {
 
-    }
+            for (var i = 0; i < usersOnline; i++) {
+                if (!(usersOnline == 2 && playersOn[i].playerOk)) return false;
 
-    /*Verifica se os players estão prontos
-     * Basicamente verifica se já colocaram seus nomes e se são 2*/
-    function verificarPlayersDone() {
-
-        for (var i = 0; i < usersOnline; i++) {
-            if (!(usersOnline == 2 && playersOn[i].playerOk)) return false;
-
+            }
+            return true;
         }
-        return true;
-    }
 
 });
 
